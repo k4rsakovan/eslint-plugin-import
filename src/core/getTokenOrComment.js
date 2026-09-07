@@ -12,7 +12,7 @@
  * @param {import('eslint').AST.Token | import('estree').Node} nodeOrToken
  */
 export function getTokenOrCommentAfter(sourceCode, nodeOrToken) {
-  return sourceCode.getTokenOrCommentAfter
+  return typeof sourceCode.getTokenOrCommentAfter === 'function'
     ? sourceCode.getTokenOrCommentAfter(nodeOrToken)
     : sourceCode.getTokenAfter(nodeOrToken, { includeComments: true });
 }
@@ -22,7 +22,7 @@ export function getTokenOrCommentAfter(sourceCode, nodeOrToken) {
  * @param {import('eslint').AST.Token | import('estree').Node} nodeOrToken
  */
 export function getTokenOrCommentBefore(sourceCode, nodeOrToken) {
-  return sourceCode.getTokenOrCommentBefore
+  return typeof sourceCode.getTokenOrCommentBefore === 'function'
     ? sourceCode.getTokenOrCommentBefore(nodeOrToken)
     : sourceCode.getTokenBefore(nodeOrToken, { includeComments: true });
 }
